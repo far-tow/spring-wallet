@@ -1,2 +1,6 @@
-package se.lexicon.springwallet.model;public enum TransactionType {
+package se.lexicon.springwallet.model;
+
+public enum TransactionType {
+
+    DEPOSIT, WITHDRAW
 }

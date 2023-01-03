@@ -1,11 +1,15 @@
-package se.lexicon.springwallet.service;
+package se.lexicon.springwallet.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import se.lexicon.springwallet.dao.AccountDao;
 import se.lexicon.springwallet.dao.CostumerDao;
+import se.lexicon.springwallet.model.Account;
 import se.lexicon.springwallet.model.Costumer;
+import se.lexicon.springwallet.service.CostumerService;
 
-public class CostumerServiceImpl implements CostumerService{
+@Component
+public class CostumerServiceImpl implements CostumerService {
 
     AccountDao accountDao;
     CostumerDao costumerDao;
@@ -18,9 +22,12 @@ public class CostumerServiceImpl implements CostumerService{
 
     @Override
     public Costumer registerCostumer(Costumer costumerData) {
-        if (costumerData == null)throw new IllegalArgumentException("Costumer Data was null");
+        if (costumerData == null) throw new IllegalArgumentException("Costumer Data was null");
         if (costumerData.getAccount() == null) throw new IllegalArgumentException("Account data was null");
-
-        return null;
+        Account accountData = costumerData.getAccount();
+        Account createdAccount = accountDao.create(accountData);
+        costumerData.setAccount(createdAccount);
+        Costumer createdCostumer = costumerDao.create(costumerData);
+        return createdCostumer;
     }
 }

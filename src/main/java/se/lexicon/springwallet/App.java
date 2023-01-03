@@ -2,14 +2,11 @@ package se.lexicon.springwallet;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import se.lexicon.springwallet.config.AppConfig;
-import se.lexicon.springwallet.dao.AccountDao;
-import se.lexicon.springwallet.dao.CostumerDao;
-import se.lexicon.springwallet.dao.impl.CostumerDaoImpl;
 import se.lexicon.springwallet.model.Account;
 import se.lexicon.springwallet.model.Costumer;
 import se.lexicon.springwallet.service.CostumerService;
 
-public class main {
+public class App {
 
     public static void main(String[] args) {
         //AccountDao accountDao = new AccountDaoImpl();
