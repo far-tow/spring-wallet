@@ -1,5 +1,5 @@
 # Wallet Project
-#### A simple project on SpringFramework in Java (Maven)
+#### A simple project on SpringFramework and Lombok in Java (Maven)
 
 ## Class Diagram
 
