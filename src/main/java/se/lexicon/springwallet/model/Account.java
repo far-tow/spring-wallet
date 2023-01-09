@@ -5,8 +5,12 @@ import se.lexicon.springwallet.exeptions.InsufficientFoundsException;
 
 @Getter
 @Setter
-@EqualsAndHashCode
-@ToString
+@EqualsAndHashCode(exclude = "balance")
+@ToString(includeFieldNames = false)
+@AllArgsConstructor
+@NoArgsConstructor
+
+@Data
 public class Account {
     private Long id;
     private double balance;
@@ -15,10 +19,6 @@ public class Account {
         this.balance = balance;
     }
 
-    public Account(Long id, double balance) {
-        this.id = id;
-        this.balance = balance;
-    }
 
     public void withdraw(double amount) throws InsufficientFoundsException {
         if (amount <= 0) throw new IllegalArgumentException("Amount is not valid");

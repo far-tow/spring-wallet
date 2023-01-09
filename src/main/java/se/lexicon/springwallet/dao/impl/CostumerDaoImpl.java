@@ -13,7 +13,7 @@ import java.util.Optional;
 @Component
 public class CostumerDaoImpl implements CostumerDao {
 
-    private List<Costumer> storage = new ArrayList<>();
+    private final List<Costumer> storage = new ArrayList<>();
 
     @Override
     public Costumer create(Costumer costumer) {

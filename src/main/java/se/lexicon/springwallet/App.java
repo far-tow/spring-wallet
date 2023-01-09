@@ -15,8 +15,8 @@ public class App {
         CostumerService costumerService = context.getBean(CostumerService.class);
         System.out.println(costumerService.registerCostumer(new Costumer("Farhad", "Towfighian", new Account(100.98))));
 
-
-       /* AccountDao accountDao = context.getBean(AccountDao.class);
+        //Creating new Account and Costumer is moved to Service package !
+        /*AccountDao accountDao = context.getBean(AccountDao.class);
         CostumerDao costumerDao = context.getBean(CostumerDao.class);
         Account accountData = new Account(0);
         Account createdAccount = accountDao.create(accountData);
@@ -24,8 +24,9 @@ public class App {
         Account accountData2 = new Account(10);
         Account createdAccount2 = accountDao.create(accountData2);
         //System.out.println("createdAccount2 = " + createdAccount2);
+        System.out.println();
 
-        Costumer costumerData = new Costumer("Farhad", "Towfighian", createdAccount);
+        /*Costumer costumerData = new Costumer("Farhad", "Towfighian", createdAccount);
         Costumer createdCostumer = costumerDao.create(costumerData);
         System.out.println("createdCostumer = " + createdCostumer);
         Costumer costumerData2 = new Costumer("Mehrdad", "Javan", createdAccount2);
