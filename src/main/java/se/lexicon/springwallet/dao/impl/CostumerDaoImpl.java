@@ -3,12 +3,14 @@ package se.lexicon.springwallet.dao.impl;
 import org.springframework.stereotype.Component;
 import se.lexicon.springwallet.dao.CostumerDao;
 import se.lexicon.springwallet.dao.impl.sequencers.CostumerIdSequencer;
+import se.lexicon.springwallet.exeptions.DataNotFoundException;
 import se.lexicon.springwallet.model.Costumer;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 public class CostumerDaoImpl implements CostumerDao {
@@ -38,11 +40,18 @@ public class CostumerDaoImpl implements CostumerDao {
     }
 
     @Override
-    public void remove(Long aLong) {
-        /*ToDo: do it later
-        @author: farhad - @Date: 2023-01-03 - @Time: 16:54
-        */
+    public void remove(Long costumerId) throws DataNotFoundException {
+       Optional<Costumer> optionalCostumer= findById(costumerId);
+        if(!optionalCostumer.isPresent()) throw new DataNotFoundException("Data not found exception");
+        else storage.remove(optionalCostumer.get());
+    }
 
-
+    @Override
+    public List<Costumer> findByName(String firstName) {
+        List<Costumer> filteredList = new ArrayList<>();
+    if (firstName == null) throw new IllegalArgumentException("Firstname was null");
+    return storage.stream()
+            .filter(element -> element.getFirstName().equals(firstName))
+            .collect(Collectors.toList());
     }
 }

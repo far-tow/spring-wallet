@@ -13,7 +13,7 @@ public class App {
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         CostumerService costumerService = context.getBean(CostumerService.class);
-        System.out.println(costumerService.registerCostumer(new Costumer("Farhad", "Towfighian", new Account(100.98))));
+        System.out.println(costumerService.registerCostumer(new Costumer("Farhad", "Towfighian", new Account(100.00))));
 
         //Creating new Account and Costumer is moved to Service package !
         /*AccountDao accountDao = context.getBean(AccountDao.class);
@@ -32,6 +32,7 @@ public class App {
         Costumer costumerData2 = new Costumer("Mehrdad", "Javan", createdAccount2);
         Costumer createdCostumer2 = costumerDao.create(costumerData2);
         System.out.println("createdCostumer2 = " + createdCostumer2);*/
+        
 
     }
 }

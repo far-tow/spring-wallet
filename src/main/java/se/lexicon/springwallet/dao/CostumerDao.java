@@ -2,6 +2,10 @@ package se.lexicon.springwallet.dao;
 
 import se.lexicon.springwallet.model.Costumer;
 
-public interface CostumerDao extends BaseDao<Costumer, Long>{
+import java.util.List;
+
+public interface CostumerDao extends BaseDao<Costumer, Long> {
+
+    List<Costumer> findByName(String firstName);
 
 }
