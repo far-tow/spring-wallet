@@ -30,7 +30,7 @@ public class AccountDaoImpl implements AccountDao {
     }
 
     @Override
-    public Optional findById(Long id) {
+    public Optional<Account> findById(Long id) {
         if (id == null) throw new IllegalArgumentException("Account id was null");
         return storage.stream()
                 .filter(account -> account.getId().equals(id))

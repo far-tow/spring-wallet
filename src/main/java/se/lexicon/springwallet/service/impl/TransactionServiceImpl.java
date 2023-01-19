@@ -13,6 +13,8 @@ import se.lexicon.springwallet.model.Transaction;
 import se.lexicon.springwallet.model.TransactionType;
 import se.lexicon.springwallet.service.TransactionService;
 
+import java.util.Optional;
+
 @Component
 public class TransactionServiceImpl implements TransactionService {
 
@@ -28,15 +30,12 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public Transaction moneyTransfer(Long costumerId, double amount, TransactionType type) throws DataNotFoundException, InsufficientFoundsException {
-        if (costumerId == null) throw new IllegalArgumentException("costumer id was null");
-
+    public Transaction moneyTransfer(Long costumerId, double amount, TransactionType type) throws Throwable {
         Costumer costumer = costumerDao.findById(costumerId)
-                .orElseThrow(() -> new DataNotFoundException("Costumer id was not valid"));
-
+                .orElseThrow(()-> new DataNotFoundException("costumer id was not valid"));
 
         Account account = costumer.getAccount();
-        if (type.equals(TransactionType.DEPOSIT)) account.deposit(amount);
+        if (type.equals(TransactionType.DEPOSIT))account.deposit(amount);
         else account.withdraw(amount);
 
         accountDao.updateBalance(account);

@@ -27,7 +27,7 @@ public class CostumerDaoImpl implements CostumerDao {
     }
 
     @Override
-    public Optional findById(Long id) {
+    public Optional<Costumer>findById(Long id) {
         if (id == null) throw new IllegalArgumentException("Costumer id was null");
         return storage.stream()
                 .filter(costumer -> costumer.getId().equals(id))
